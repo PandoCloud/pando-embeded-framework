@@ -54,6 +54,17 @@ typedef double              double64;
 
 typedef unsigned int        size_t;
 
+#ifdef ESP8266
+#define FUNCTION_ATTRIBUTE
+#else
+#define FUNCTION_ATTRIBUTE
+#endif
+
+struct sys_buf{
+	char* buf;
+	uint16 length;
+};
+
 #ifndef NULL
 #define NULL (void *)0
 #endif /* NULL */

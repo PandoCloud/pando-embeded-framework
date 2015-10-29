@@ -1,4 +1,5 @@
 #include "pando_channel.h"
+#include "../platform/include/c_types.h"
 
 #define MAX_CHAN_LEN 8
 
