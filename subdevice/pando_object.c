@@ -37,8 +37,8 @@ find_pando_object(int8 no)
         {
             return &s_pando_object_list[i];
         }
-        return NULL;
     }
+	return NULL;
 }
 
 pando_objects_iterator* FUNCTION_ATTRIBUTE
