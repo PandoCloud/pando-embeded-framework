@@ -1,8 +1,10 @@
-#include "pando_subdevice.h"
-#include "gateway/pando_channel.h"
-#include "protocol/common_functions.h"
-#include "protocol/sub_device_protocol.h"
-#include "pando_object.h"
+#include "../../../pando/framework/subdevice/pando_subdevice.h"
+
+#include "../../../pando/framework/gateway/pando_channel.h"
+#include "../../../pando/framework/protocol/common_functions.h"
+#include "../../../pando/framework/protocol/sub_device_protocol.h"
+#include "../../../pando/framework/subdevice/pando_object.h"
+#include "../platform/include/pando_sys.h"
 
 #define CMD_QUERY_STATUS (65528)
 
@@ -68,7 +70,7 @@ decode_command(struct sub_device_buffer *device_buffer)
 {
     struct pando_command cmd_body;
     PARAMS *cmd_param = get_sub_device_command(device_buffer, &cmd_body);
-    if(CMD_QUERY_STATUS == cmd_body.command_id)
+    if(CMD_QUERY_STATUS == cmd_body.command_num)
     {
         pd_printf("receive a get request\n");
         send_current_status();

@@ -1,12 +1,15 @@
 #include "pando_device_login.h"
 #include "pando_storage_interface.h"
-#include "platform/include/pando_sys.h"
-#include "platform/include/pando_types.h"
-#include "lib/converter.h"
-#include "lib/json/jsonparse.h"
-#include "lib/json/jsontree.h"
-#include "lib/pando_json.h"
-#include "platform/include/pando_net_http.h"
+#include "gateway_defs.h"
+#include "../platform/include/pando_sys.h"
+#include "../platform/include/pando_types.h"
+#include "../lib/converter.h"
+#include "../lib/json/jsonparse.h"
+#include "../lib/json/jsontree.h"
+#include "../lib/pando_json.h"
+#include "../platform/include/pando_net_http.h"
+
+#include "pando_gateway.h"
 
 #define MAX_BUF_LEN 256
 #define KEY_BUF_LEN 64
@@ -117,7 +120,6 @@ void FUNCTION_ATTRIBUTE
 pando_device_login(gateway_callback callback)
 {
     pd_printf("begin login device...\n");
-
     if(callback != NULL)
     {
         device_login_callback = callback;

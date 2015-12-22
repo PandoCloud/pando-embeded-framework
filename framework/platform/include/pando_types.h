@@ -12,6 +12,8 @@
 #ifndef _PANDO_TYPES_H_
 #define _PANDO_TYPES_H_
 
+#include "c_types.h"
+
 typedef unsigned char       uint8_t;
 typedef signed char         sint8_t;
 typedef signed char         int8_t;
@@ -66,11 +68,11 @@ typedef void (* data_handler_callback)(uint8_t *buffer, uint16_t length);
 #define REG_SET_BIT(_r, _b)  (*(volatile uint32_t*)(_r) |= (_b))
 #define REG_CLR_BIT(_r, _b)  (*(volatile uint32_t*)(_r) &= ~(_b))
 
-#ifdef ESP8266_PLANTFORM
-#define FUNCTION_ATTRIBUTE ICACHE_FLASH_ATTR
+/*#ifdef ESP8266_PLANTFORM
+#include "c_types.h"
 #else
 #define FUNCTION_ATTRIBUTE
-#endif
+#endif*/
 
 #ifndef __cplusplus
 typedef unsigned char   bool;

@@ -11,6 +11,7 @@
 
 
 #include "pando_protocol.h"
+#include "../platform/include/pando_sys.h"
 
 static int FUNCTION_ATTRIBUTE check_pdbin_header(struct mqtt_bin_header *bin_header);
 static int FUNCTION_ATTRIBUTE init_device_header(struct device_header *header, struct mqtt_bin_header *bin_header,

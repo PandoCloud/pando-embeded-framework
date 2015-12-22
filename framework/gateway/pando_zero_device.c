@@ -9,10 +9,11 @@
  *     Modification:
  *********************************************************/
 #include "pando_channel.h"
-#include "protocol/sub_device_protocol.h"
+#include "../platform/include/pando_types.h"
+#include "../protocol/sub_device_protocol.h"
 //#include "pando_system_time.h"
 #include "pando_zero_device.h"
-#include "platform/include/pando_types.h"
+#include "../platform/include/pando_sys.h"
 
 #define COMMON_COMMAND_UPGRADE 65529
 #define COMMON_COMMAND_REBOOT  65535
@@ -44,14 +45,13 @@ zero_device_data_process(uint8_t * buffer, uint16_t length)
     }
     pd_memcpy(device_buffer->buffer, buffer, length);
     device_buffer->buffer_length = length;
-
     struct TLVs *cmd_param = get_sub_device_command(device_buffer, &cmd_body);
-    if(COMMON_COMMAND_SYN_TIME == cmd_body.command_id )
+    if(COMMON_COMMAND_SYN_TIME == cmd_body.command_num )
     {
         pd_printf("PANDO: synchronize time\n");
         uint64 time = get_next_uint64(cmd_param);
         show_package((uint8*)(&time), sizeof(time));
-        pando_set_system_time(time);
+       // pando_set_system_time(time);
     }
 }
 
